@@ -13,6 +13,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "antd-mobile": "^5.30.0",
+    "antd-mobile-icons": "^0.3.0",
     "graphql": "^16.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
