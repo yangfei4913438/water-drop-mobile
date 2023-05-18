@@ -11,7 +11,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
-    'plugin:prettier/recommended',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -22,16 +22,43 @@ module.exports = {
   },
   plugins: ['react-refresh'],
   rules: {
-    'react-refresh/only-export-components': 'warn',
+    'no-nested-ternary': 0,
+    'no-return-assign': 0,
+    'no-param-reassign': 0,
+    'no-restricted-syntax': 0,
+    'no-plusplus': 0,
+    'no-console': 0,
+
+    'consistent-return': 0,
+
+    'import/prefer-default-export': 0,
+
     'react/function-component-definition': 0,
     'react/react-in-jsx-scope': 0,
-    'import/prefer-default-export': 0,
+    'react/require-default-props': 0,
+    'react/jsx-no-constructed-context-values': 0,
+    'react/no-unstable-nested-components': 0,
+    'react/jsx-props-no-spreading': 0,
+    'react/no-array-index-key': 0,
+
     'react-hooks/exhaustive-deps': 1,
+    'react-refresh/only-export-components': 1,
+
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
+    'jsx-a11y/no-noninteractive-element-interactions': 0,
+
+    '@typescript-eslint/no-use-before-define': 0,
+    '@typescript-eslint/no-shadow': 0,
+    '@typescript-eslint/naming-convention': 0,
+    '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-unused-vars': 0,
   },
   settings: {
     react: {
       version: 'detect',
     },
   },
-  ignorePatterns: ['.eslintrc.cjs', 'vite.config.ts'],
+  ignorePatterns: ['.eslintrc.cjs'],
 };

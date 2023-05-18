@@ -3,22 +3,30 @@
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
-    "skipLibCheck": true,
+    "allowJs": false,
+    "skipLibCheck": true,  /* Skip type checking all .d.ts files. */
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
+    "moduleResolution": "bundler", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
     "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true, // 直接加载json文件
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noUnusedLocals": true, // 检查只声明、未使用的局部变量(只提示不报错)
+    "noUnusedParameters": true, // 检查未使用的函数参数(只提示不报错)
+    "noFallthroughCasesInSwitch": true,
+
+    // 指定根路径
+    "baseUrl": ".",
+    /* 配置路径别名 */
+    "paths": {
+      "*": ["src/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src/vite-env.d.ts", "**/*.ts", "**/*.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

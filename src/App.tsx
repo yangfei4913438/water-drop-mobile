@@ -1,33 +1,56 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '../public/vite.svg';
-import './App.css';
+import { type ChangeEvent, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 
-function App() {
-  const [count, setCount] = useState(0);
+import { findUser, updateUser } from './graphql/user';
+
+const userId = '42a1cfa2-4308-4cfd-a876-6b8445b14cf5';
+
+const App = () => {
+  const [nickname, setNickname] = useState('');
+
+  const { data, loading, refetch } = useQuery(findUser, {
+    variables: { id: userId },
+  });
+
+  const [update, { loading: loading2 }] = useMutation(updateUser);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNickname(e.target.value);
+  };
+
+  const handleClick = () => {
+    update({
+      variables: {
+        id: userId,
+        params: {
+          name: nickname,
+        },
+      },
+    })
+      .then(() => {
+        refetch();
+      })
+      .catch((err) => {
+        console.log('failed:', err);
+      });
+  };
 
   return (
-    <>
+    <div>
+      <p>{loading ? 'loading...' : JSON.stringify(data)}</p>
       <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount((count1) => count1 + 1)}>
-          count is {count}
+        <input
+          placeholder='请输入新的昵称'
+          disabled={loading2}
+          value={nickname}
+          onChange={handleChange}
+        />
+        <button type='button' onClick={handleClick}>
+          {loading2 ? '更新中' : '修改名称'}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
-    </>
+    </div>
   );
-}
+};
 
 export default App;
