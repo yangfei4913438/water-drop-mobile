@@ -1,5 +1,16 @@
 import { gql } from '@apollo/client';
 
+export interface UserFieldType {
+  id: string;
+  avatar: string;
+  avatars: { url: string }[]; // 本地缓存数据，组件库用的
+  name: string;
+  desc: string;
+  tel: string;
+  password: string;
+  account: string;
+}
+
 // 查询用户
 export const findUser = gql`
   query findUser($id: String!) {
@@ -10,6 +21,7 @@ export const findUser = gql`
       tel
       name
       desc
+      avatar
     }
   }
 `;

@@ -4,9 +4,10 @@ import { ApolloProvider } from '@apollo/client';
 import { ConfigProvider } from 'antd-mobile';
 import zhCN from 'antd-mobile/es/locales/zh-CN';
 
+import { client } from '@/core/apollo';
+
 import App from './App';
 import './index.css';
-import { client } from './core/apollo';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

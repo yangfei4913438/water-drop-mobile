@@ -5,6 +5,8 @@
     "module": "ESNext",
     "allowJs": false,
     "skipLibCheck": true,  /* Skip type checking all .d.ts files. */
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler", // 模块解析策略，ts默认用node的解析策略，即相对的方式导入
@@ -24,7 +26,7 @@
     "baseUrl": ".",
     /* 配置路径别名 */
     "paths": {
-      "*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src/vite-env.d.ts", "**/*.ts", "**/*.tsx"],
