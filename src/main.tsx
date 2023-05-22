@@ -7,7 +7,7 @@ import zhCN from 'antd-mobile/es/locales/zh-CN';
 import { client } from '@/core/apollo';
 
 import App from './App';
-import './index.css';
+import './index.scss';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

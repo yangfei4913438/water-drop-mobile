@@ -4,3 +4,4 @@ mock/
 
 # file
 vite.config.ts
+tailwind.config.js
