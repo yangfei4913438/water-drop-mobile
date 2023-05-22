@@ -10,14 +10,19 @@ import useUploadOSS from '@/hooks/useUploadOSS';
 const userId = 'd02f3298-8446-41bf-b9a2-1e5fe5fe97f8';
 
 const App = () => {
+  // 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建
   const [form] = Form.useForm<UserFieldType>();
+  // 密码输入框的可见性
   const [visible, setVisible] = useState(false);
+  // 上传oss的响应方法
   const { uploadHandler } = useUploadOSS<ImageUploadItem>();
 
+  // 自动请求
   const { refetch } = useQuery<{ find: UserFieldType }>(findUser, {
     variables: { id: userId },
     onCompleted: ({ find }) => {
-      console.log('find:', find);
+      // console.log('find:', find);
+      // 请求成功后，将数据写入表格。 tips: 多几个属性不影响的。
       form.setFieldsValue({
         ...find,
         avatars: [{ url: find.avatar }], // 因为后台不存在 avatars属性，所以拿到数据的时候，需要处理一下。
@@ -25,8 +30,10 @@ const App = () => {
     },
   });
 
-  const [update, { loading: loading2 }] = useMutation(updateUser);
+  // 更新hook
+  const [update, { loading }] = useMutation(updateUser);
 
+  // 响应提交按钮，参数就是所有表单选项的kv值, 不会有多余的无关属性
   const handleFinish = (value: UserFieldType) => {
     const { avatars, ...rest } = value;
     update({
@@ -39,6 +46,7 @@ const App = () => {
       },
     })
       .then(() => {
+        // 更新成功后，重新发起请求
         refetch();
       })
       .catch((err) => {
@@ -53,7 +61,7 @@ const App = () => {
       onFinish={handleFinish}
       footer={
         <Button block type='submit' color='primary' size='large'>
-          {loading2 ? '更新中' : '修改名称'}
+          {loading ? '更新中' : '修改名称'}
         </Button>
       }
     >
