@@ -3,6 +3,9 @@
 @tailwind utilities;
 @tailwind screens;
 
+@import "normalize.css";
+@import "sanitize.css";
+
 @layer base {
   .flex-center {
     @apply flex items-center justify-center;

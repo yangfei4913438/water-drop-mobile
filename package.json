@@ -10,12 +10,18 @@
     "preview": "vite preview",
     "mock": "node ./mock/index.js"
   },
+  "browserslist": [
+    "last 2 version",
+    "> 1%",
+    "not dead"
+  ],
   "dependencies": {
     "@apollo/client": "^3.7.14",
     "antd-mobile": "^5.30.0",
     "antd-mobile-icons": "^0.3.0",
     "classnames": "^2.3.2",
     "graphql": "^16.6.0",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -30,6 +36,7 @@
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
+    "cssnano": "^6.0.1",
     "eslint": "^8.38.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -44,6 +51,7 @@
     "postcss": "^8.4.23",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-nested": "^6.0.1",
+    "postcss-normalize": "^10.0.1",
     "postcss-preset-env": "^8.4.1",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
