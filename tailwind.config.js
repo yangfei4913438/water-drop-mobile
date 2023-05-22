@@ -193,6 +193,9 @@ const config = {
       },
     },
   },
+  corePlugins: {
+    preflight: false, // 避免和antd冲突
+  },
   plugins: [require('@tailwindcss/typography')],
 };
 

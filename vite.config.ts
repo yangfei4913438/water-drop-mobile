@@ -5,6 +5,14 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  esbuild: {
+    jsxFactory: 'h',
+    jsxFragment: 'Fragment',
+  },
+  server: {
+    proxy: {},
+    port: 5002,
+  },
   plugins: [react(), eslint()],
   resolve: {
     alias: {
